@@ -5,6 +5,7 @@ import './App.css';
 
 function App() {
   const [difficulty, setDifficulty] = useState<number>(0);
+  const [clicks, setClicks] = useState<number>(0);
   const [grid, setGrid] = useState<string[][]>([]);
   const [activeCell, setActiveCell] = useState<number[][]>([]);
 
@@ -27,6 +28,7 @@ function App() {
   }
 
   function handleClick(r: number, c: number) {
+    setClicks(clicks + 1);
     if (activeCell.length == 2) {
       return
     }
@@ -77,8 +79,9 @@ function App() {
             </div>
           ))}
         </div>
-        <div className='flex items-center justify-center mt-5'>
+        <div className='flex flex-col items-center justify-center gap-8 mt-5'>
           <button onClick={handleReset} className='bg-[#F8F1F1] p-3 text-xl font-medium text-gray-700 rounded-md'>Reset</button>
+          <div className='text-[#F8F1F1] text-4xl'>Clicks: {clicks}</div>
         </div>
       </div>
     )
