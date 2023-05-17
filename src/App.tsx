@@ -28,10 +28,10 @@ function App() {
   }
 
   function handleClick(r: number, c: number) {
-    setClicks(clicks + 1);
     if (activeCell.length == 2) {
       return
     }
+    setClicks(clicks + 1);
     if (activeCell.length == 1) {
       if (activeCell[0][0] === r && activeCell[0][1] === c)
         return;
@@ -52,6 +52,7 @@ function App() {
 
   function handleReset() {
     setDifficulty(0);
+    setClicks(0);
     setActiveCell([]);
     setGrid([]);
   }
@@ -81,7 +82,7 @@ function App() {
         </div>
         <div className='flex flex-col items-center justify-center gap-8 mt-5'>
           <button onClick={handleReset} className='bg-[#F8F1F1] p-3 text-xl font-medium text-gray-700 rounded-md'>Reset</button>
-          <div className='text-[#F8F1F1] text-4xl'>Clicks: {clicks}</div>
+          <div className='text-[#F8F1F1] text-3xl'>Clicks: {clicks}</div>
         </div>
       </div>
     )
