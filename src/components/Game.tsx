@@ -67,7 +67,7 @@ function Game() {
 	useEffect(() => {
 		if (!success || !name || !difficulty || clicks < gridLength * gridLength)
 			return;
-		fetch('https://copper-haddock-yoke.cyclic.app/entry/', {
+		fetch('https://teal-magnificent-coyote.cyclic.app/entry', {
 			method: 'POST',
 			body: JSON.stringify({ name, clicks, difficulty	}),
 			headers: {

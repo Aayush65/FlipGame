@@ -14,9 +14,9 @@ function Leaderboard() {
 
     // Fetches the latest data from the server
     useEffect(() => {
-        setInterval(() => {
+        async function callBackend() {
             console.log("started fetching");
-            fetch(`https://copper-haddock-yoke.cyclic.app/entry/${difficulty}`, {
+            fetch(`https://teal-magnificent-coyote.cyclic.app/entry/${difficulty}`, {
                 method: 'GET',
                 headers: {
                     'Content-type': 'application/json; charset=UTF-8',
@@ -26,7 +26,9 @@ function Leaderboard() {
                 .then((data) => setWinners(data))
                 .catch((err) => {
                     console.log(err.message);
-            })}, 30000);
+        })} 
+        callBackend();
+        setInterval( callBackend , 30000);
     }, []);
 
     return (
