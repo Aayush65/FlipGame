@@ -14,6 +14,7 @@ function Game() {
 
 	const { difficulty, clicks, setDifficulty, setClicks } = useContext(context);
 	
+	// This sets gridLength according to the difficulty selected.
 	useEffect(() => {
 		if (difficulty === "Easy")
 			setGridLength(4);
@@ -23,13 +24,16 @@ function Game() {
 			setGridLength(8);
 	}, [difficulty]);
 
+	// This sets the grid according to the gridLength.
 	useEffect(() => {
 		setGrid(generateMatrix(gridLength));
 	}, [gridLength]);
 
+	// This sets resets the activeCell if both the tiles matches
+	// This also helps to restart the game by reseting the grid when the activeCell finally get sets to active
 	useEffect(() => {
 		if (activeCell.length === 2 && grid[activeCell[0][0]][activeCell[0][1]] === grid[activeCell[1][0]][activeCell[1][1]]){
-		const newGrid = [...grid];
+			const newGrid = [...grid];
 			newGrid[activeCell[0][0]][activeCell[0][1]] = '';
 			newGrid[activeCell[1][0]][activeCell[1][1]] = '';
 			setTimeout(() => {
@@ -43,6 +47,8 @@ function Game() {
 		}
 	}, [activeCell, grid]);
 
+	// This sets success to true if all the tiles are matched
+	// This also helps to restart the game by reseting the value of activeCells and others 
 	useEffect(() => {
 		if (gridLength !== 0 && completedCellsCount === gridLength * gridLength){
 			setSuccess(true);
@@ -51,10 +57,12 @@ function Game() {
 			setActiveCell([]);
 			setGrid([]);
 			setClicks(0);
+			setTimeoutID(null);
 			setSuccess(false);
 		}
 	}, [completedCellsCount]);
 
+	// This appends indices of new clicked tiles to activeCells
 	function handleClick(r: number, c: number) {
 		setClicks(clicks + 1);
 		if (activeCell.length == 2 && timeoutID) {
@@ -72,14 +80,17 @@ function Game() {
 		}
 	}
 
+	// This checks if an arr of length two exists in activeCells
 	function exists(arr: number[]): boolean {
 		return activeCell.some(a => a[0] === arr[0] && a[1] === arr[1]);
 	}
 
+	// This initiates the restart process
 	function handleRestart() {
 		setCompletedCellsCount(-1);
 	}
 
+	// This resets the game, so that the player goes back to the pregame menu
 	function handleReset() {
 		setDifficulty("");
 		setClicks(0);
@@ -98,12 +109,8 @@ function Game() {
 				  if (cell !== '')
 					return (
 					  <ReactCardFlip isFlipped={exists([rowIndex, colIndex])} flipDirection='horizontal' key={colIndex}>
-						<div
-						  onClick={() => handleClick(rowIndex, colIndex)}
-						  className='flex w-10 h-10 md:w-20 md:h-20 bg-[#E57C23] hover:cursor-pointer rounded-[10px]'></div>
-						<div className='flex items-center justify-center w-10 h-10 md:w-20 md:h-20 text-3xl md:text-5xl rounded-[10px] bg-[#E8AA42] hover:cursor-pointer'>
-						  {cell}
-						</div>
+						<div onClick={() => handleClick(rowIndex, colIndex)} className='flex w-10 h-10 md:w-20 md:h-20 bg-[#E57C23] hover:cursor-pointer rounded-[10px]'></div>
+						<div className='flex items-center justify-center w-10 h-10 md:w-20 md:h-20 text-3xl md:text-5xl rounded-[10px] bg-[#E8AA42] hover:cursor-pointer'>{cell}</div>
 					  </ReactCardFlip>
 					);
 				  else
