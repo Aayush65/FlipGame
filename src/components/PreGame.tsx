@@ -9,25 +9,6 @@ function PreGame() {
 		localStorage.setItem("name", JSON.stringify(name));
 	}
 
-	// async function handleSubmit(e: any) {
-	// 	e.preventDefault();
-	// 	fetch('http://localhost:5000/entry/', {
-	// 		method: 'POST',
-	// 		body: JSON.stringify({
-	// 			"name": name,
-	// 		}),
-	// 		headers: {
-	// 		  'Content-type': 'application/json; charset=UTF-8',
-	// 		},
-	// 	  })
-	// 		.then((response) => response.json())
-	// 		.then((data) => console.log(data))
-	// 		.then(() => setName(""))
-	// 		.catch((err) => {
-	// 			console.log(err.message);
-	// 		});
-	// }
-
 	function handleDifficulty(e: MouseEvent ) {
 		setDifficulty((e.target as HTMLInputElement).value);
 	}

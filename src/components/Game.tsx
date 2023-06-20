@@ -1,7 +1,8 @@
 import { useContext, useEffect, useState } from "react";
 import { context } from "./context";
 import ReactCardFlip from 'react-card-flip';
-import generateMatrix from '../generateMatrix';
+import generateMatrix from '../utils/generateMatrix';
+import Leaderboard from "./Leaderboard";
 
 
 function Game() {
@@ -119,33 +120,36 @@ function Game() {
 	}
 
 	return (
-		<div className='flex flex-col gap-4 md:flex-row md:items-center justify-center md:gap-8 bg-[#025464] h-screen select-none'>
-		  <div className='flex flex-col items-center gap-1 md:gap-2 text-2xl font-bold text-gray-700'>
-			{grid.map((row, rowIndex) => (
-			  <div key={rowIndex} className='flex gap-1 md:gap-2'>
-				{row.map((cell, colIndex) => {
-				  if (cell !== '')
-					return (
-					  <ReactCardFlip isFlipped={exists([rowIndex, colIndex])} flipDirection='horizontal' key={colIndex}>
-						<div onClick={() => handleClick(rowIndex, colIndex)} className='flex w-10 h-10 md:w-20 md:h-20 bg-[#E57C23] hover:cursor-pointer rounded-[10px]'></div>
-						<div className='flex items-center justify-center w-10 h-10 md:w-20 md:h-20 text-3xl md:text-5xl rounded-[10px] bg-[#E8AA42] hover:cursor-pointer'>{cell}</div>
-					  </ReactCardFlip>
-					);
-				  else
-					return (
-					  <div key={colIndex} className='w-10 h-10 md:w-20 md:h-20 bg-[#d2ae6e] rounded-[10px]'></div>
-					);
-				})}
+		<div className="flex flex-col gap-5 bg-[#025464]">
+			<div className='flex flex-col gap-4 md:flex-row md:items-center justify-center md:gap-8 min-h-screen select-none'>
+			  <div className='flex flex-col items-center gap-1 md:gap-2 text-2xl font-bold text-gray-700'>
+				{grid.map((row, rowIndex) => (
+				  <div key={rowIndex} className='flex gap-1 md:gap-2'>
+					{row.map((cell, colIndex) => {
+					  if (cell !== '')
+						return (
+						  <ReactCardFlip isFlipped={exists([rowIndex, colIndex])} flipDirection='horizontal' key={colIndex}>
+							<div onClick={() => handleClick(rowIndex, colIndex)} className='flex w-10 h-10 md:w-20 md:h-20 bg-[#E57C23] hover:cursor-pointer rounded-[10px]'></div>
+							<div className='flex items-center justify-center w-10 h-10 md:w-20 md:h-20 text-3xl md:text-5xl rounded-[10px] bg-[#E8AA42] hover:cursor-pointer'>{cell}</div>
+						  </ReactCardFlip>
+						);
+					  else
+						return (
+						  <div key={colIndex} className='w-10 h-10 md:w-20 md:h-20 bg-[#d2ae6e] rounded-[10px]'></div>
+						);
+					})}
+				  </div>
+				))}
 			  </div>
-			))}
-		  </div>
-		  <div className='flex flex-col items-center justify-center gap-4 mt-5 md:mt-0'>
-			<div className="flex justify-center items-center gap-5 md:flex-col">
-				<button onClick={handleRestart} className='bg-[#F8F1F1] p-3 text-md md:text-xl font-medium text-gray-700 rounded-md hover:bg-[#c8c2c2] active:bg-[#aeabab] active:text-black hover:text-black'>{success ? "New Game" : "Restart"}</button>
-				<button onClick={handleReset} className='bg-[#F8F1F1] p-3 text-md md:text-xl font-medium text-gray-700 rounded-md hover:bg-[#c8c2c2] active:bg-[#aeabab] active:text-black hover:text-black'>Back</button>
+			  <div className='flex flex-col items-center justify-center gap-4 mt-5 md:mt-0'>
+				<div className="flex justify-center items-center gap-5 md:flex-col">
+					<button onClick={handleRestart} className='bg-[#F8F1F1] p-3 text-md md:text-xl font-medium text-gray-700 rounded-md hover:bg-[#c8c2c2] active:bg-[#aeabab] active:text-black hover:text-black'>{success ? "New Game" : "Restart"}</button>
+					<button onClick={handleReset} className='bg-[#F8F1F1] p-3 text-md md:text-xl font-medium text-gray-700 rounded-md hover:bg-[#c8c2c2] active:bg-[#aeabab] active:text-black hover:text-black'>Back</button>
+				</div>
+				<div className='flex justify-center text-gray-900 font-serif font-bold p-2 rounded-full w-32 md:w-40 text-xl md:text-2xl bg-gray-300'>Clicks: {clicks}</div>
+			  </div>
 			</div>
-			<div className='flex justify-center text-gray-900 font-serif font-bold p-2 rounded-full w-32 md:w-40 text-xl md:text-2xl bg-gray-300'>Clicks: {clicks}</div>
-		  </div>
+			<Leaderboard />
 		</div>
 	  );
 	  
