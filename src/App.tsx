@@ -7,7 +7,6 @@ import PreGame from './PreGame';
 
 function App() {
   const { difficulty } = useContext(context);
-  console.log(difficulty);
   return difficulty ? <Game /> : <PreGame />
 }
 

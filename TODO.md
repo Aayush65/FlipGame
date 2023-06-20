@@ -1,2 +1,2 @@
-1. Make the app responsive to smaller screens (smart phone screens)
+1. Make Reset and Restart Button responsive
 2. Implement Success screen overlay.
