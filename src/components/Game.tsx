@@ -1,7 +1,7 @@
 import { useContext, useEffect, useState } from "react";
 import { context } from "./context";
 import ReactCardFlip from 'react-card-flip';
-import generateMatrix from './generateMatrix';
+import generateMatrix from '../generateMatrix';
 
 
 function Game() {

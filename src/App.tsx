@@ -1,8 +1,8 @@
 import { useContext } from 'react';
-import { context } from './context';
+import { context } from './components/context';
 import './App.css';
-import Game from './Game';
-import PreGame from './PreGame';
+import Game from './components/Game';
+import PreGame from './components/PreGame';
 
 
 function App() {
