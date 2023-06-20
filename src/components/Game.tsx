@@ -12,7 +12,7 @@ function Game() {
 	const [gridLength, setGridLength] = useState<number>(0);
 	const [success, setSuccess] = useState<boolean>(false);
 
-	const { difficulty, clicks, setDifficulty, setClicks } = useContext(context);
+	const { name, difficulty, clicks, setDifficulty, setClicks } = useContext(context);
 	
 	// This sets gridLength according to the difficulty selected.
 	useEffect(() => {
@@ -61,6 +61,24 @@ function Game() {
 			setSuccess(false);
 		}
 	}, [completedCellsCount]);
+
+	// This sends the details of the game to the server
+	useEffect(() => {
+		if (!success || !name || !difficulty || clicks < gridLength * gridLength)
+			return;
+		fetch('http://localhost:5000/entry/', {
+			method: 'POST',
+			body: JSON.stringify({ name, clicks, difficulty	}),
+			headers: {
+				'Content-type': 'application/json; charset=UTF-8',
+			},
+		})
+			.then((response) => response.json())
+			.then((data) => console.log(data))
+			.catch((err) => {
+				console.log(err.message);
+			});
+	}, [success]);
 
 	// This appends indices of new clicked tiles to activeCells
 	function handleClick(r: number, c: number) {
