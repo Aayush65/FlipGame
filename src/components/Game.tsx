@@ -67,7 +67,7 @@ function Game() {
 	useEffect(() => {
 		if (!success || !name || !difficulty || clicks < gridLength * gridLength)
 			return;
-		fetch('http://localhost:5000/entry/', {
+		fetch('https://copper-haddock-yoke.cyclic.app/entry/', {
 			method: 'POST',
 			body: JSON.stringify({ name, clicks, difficulty	}),
 			headers: {

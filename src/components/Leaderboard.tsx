@@ -14,18 +14,19 @@ function Leaderboard() {
 
     // Fetches the latest data from the server
     useEffect(() => {
-        setInterval(() => {console.log("started fetching");
-        fetch(`http://localhost:5000/entry/${difficulty}`, {
-			method: 'GET',
-			headers: {
-				'Content-type': 'application/json; charset=UTF-8',
-			},
-		})
-			.then(async (response) => await response.json())
-			.then((data) => setWinners(data))
-			.catch((err) => {
-				console.log(err.message);
-			})}, 30000);
+        setInterval(() => {
+            console.log("started fetching");
+            fetch(`https://copper-haddock-yoke.cyclic.app/entry/${difficulty}`, {
+                method: 'GET',
+                headers: {
+                    'Content-type': 'application/json; charset=UTF-8',
+                },
+            })
+                .then(async (response) => await response.json())
+                .then((data) => setWinners(data))
+                .catch((err) => {
+                    console.log(err.message);
+            })}, 30000);
     }, []);
 
     return (
