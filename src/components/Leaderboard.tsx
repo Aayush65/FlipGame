@@ -15,7 +15,6 @@ function Leaderboard() {
     // Fetches the latest data from the server
     useEffect(() => {
         async function callBackend() {
-            console.log("started fetching");
             fetch(`https://teal-magnificent-coyote.cyclic.app/entry/${difficulty}`, {
                 method: 'GET',
                 headers: {
