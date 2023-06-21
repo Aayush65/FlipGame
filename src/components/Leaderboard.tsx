@@ -31,7 +31,7 @@ function Leaderboard() {
     }, []);
 
     return (
-        <div className="flex flex-col items-center justify-center gap-5">
+        <div className={`${winners.length ? "": "hidden"} flex flex-col items-center justify-center gap-5`}>
             <h1 className="text-[#F8F1F1] text-2xl md:text-3xl font-extrabold">Leaderboard</h1>
             <div className='border-white border-2 rounded-lg p-5 w-2/3 md:m-1/3'>
                 {winners.map((winner, index) => (

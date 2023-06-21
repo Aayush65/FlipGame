@@ -3,6 +3,7 @@ import { context } from "./context";
 import ReactCardFlip from 'react-card-flip';
 import generateMatrix from '../utils/generateMatrix';
 import Leaderboard from "./Leaderboard";
+import Footer from "./Footer";
 
 
 function Game() {
@@ -150,6 +151,7 @@ function Game() {
 			  </div>
 			</div>
 			<Leaderboard />
+			<Footer />
 		</div>
 	  );
 	  

@@ -16,8 +16,8 @@ function PreGame() {
 	return (
 		<div className='flex flex-col items-center justify-center h-screen p-10 md:p-0 gap-3 bg-[#025464]'>
 			
+			<p className="text-white text-center font-extrabold tracking-wider text-2xl md:text-3xl">Can you remember a few cards to <br /> to defeat others?</p>
 			<form className="flex flex-col justify-center items-center p-10 md:text-lg" onSubmit={handleSubmit} >
-				{/* <p className="text-white self-start">Name: </p> */}
 				<input onChange={(e) => setName(e.target.value)} type="text" className="py-1 px-3 rounded-lg" placeholder="Enter your Name: " value={name}/>
 				<button type="submit" className="bg-gray-800 text-white active:invert font-bold py-2 px-3 md:px-4 rounded-lg my-3">Save</button>
 			</form>
