@@ -19,7 +19,7 @@ A Memory based Game made up of fliped tiles which has some image on their rear s
 - HTML/CSS
 ## Server
 The server for this site is hosted on Cyclic.
-The repository for the server is [here]("https://github.com/Aayush65/leaderboard").
+The repository for the server is [here](https://github.com/Aayush65/leaderboard).
 ## Deployment
 
 To deploy this project, first deploy the [server](https://github.com/Aayush65/leaderboard).
