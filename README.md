@@ -31,6 +31,7 @@ After deploying the server, run the following commands for a successful deployme
 ```bash
   git clone https://github.com/Aayush65/flipgame
   cd flipgame
+  npm install
   npm run dev
 ```
 ## Demo
