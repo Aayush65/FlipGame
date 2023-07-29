@@ -34,6 +34,10 @@ After deploying the server, run the following commands for a successful deployme
   npm install
   npm run dev
 ```
+
+## Performance
+![Lighthouse score](https://github.com/Aayush65/leaderboard/assets/79572409/af0beb83-1329-4765-8fba-06e907bff9f2)
+
 ## Demo
 
 This site is hosted on [flipgame.aayush65.com](https://flipgame.aayush65.com)
