@@ -36,7 +36,7 @@ After deploying the server, run the following commands for a successful deployme
 ```
 ## Demo
 
-Hosted site [link](https://flipgame.aayush65.com)
+This site is hosted on [flipgame.aayush65.com](https://flipgame.aayush65.com)
 
 Demo video:
 
