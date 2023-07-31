@@ -42,6 +42,6 @@ After deploying the server, run the following commands for a successful deployme
 
 This site is hosted on [flipgame.aayush65.com](https://flipgame.aayush65.com)
 
-Demo video:
+**Demo Video**:
 
 https://github.com/Aayush65/FlipGame/assets/79572409/736d0698-1067-4b51-bd3b-df1ff9e15fa6
